@@ -1,0 +1,37 @@
+{% extends 'accounts/main.html' %}
+{% block content %}
+    <h3>User Profile</h3>
+        <div class="row">
+        <div class="col-md-4 border border-primary">
+            Total Orders: {{ total_orders }}
+        </div>
+        <div class="col-md-4 border border-success">
+            Orders Delivered: {{ delivered }}
+        </div>
+        <div class="col-md-4 border border-danger">
+            Orders Pending: {{ pending }}
+        </div>
+    </div>
+    <br/>
+
+<table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Date Ordered</th>
+                    <th>Status</th>
+                    <th>Update</th>
+                    <th>Remove</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for i in orders %}
+                    <tr>
+                        <td>{{ i.product }}</td>
+                        <td>{{ i.date_created }}</td>
+                        <td>Padding</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+{% endblock %}

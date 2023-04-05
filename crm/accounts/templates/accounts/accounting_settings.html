@@ -1,0 +1,11 @@
+{% extends 'accounts/main.html' %}
+
+{% block content %}
+    <img src="{{ request.user.customer.profile_pic.url }}" alt="Photo">
+    <h1>Account Profile</h1>
+    <form method="post" action="" enctype="multipart/form-data">
+    {% csrf_token %}
+        {{ form.as_p }}
+    <input type="submit" name="Update Profile">
+    </form>
+{% endblock %}

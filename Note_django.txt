@@ -1,0 +1,39 @@
+15
+
++ InstallVirtualenv: 
+	# pip install virtualenv
+	# virtualenv env
+	+ Activate env: 
+		# .\env\Scripts\activate or # env\Scripts\activate
+
++ Install Django: 
+	# pip install django
+
++ Install Django MainApp: "name"
+	# django-admin startproject crm
+
++ Install App: "name"
+	# python manage.py startapp accounts
+
++ Start Project:
+	# python manage.py runserver
+	+ Custom run port: python manage.py runserver 9000
+	
++ Migrate Admin Penel after connect DB: "mysql"
+	+ Install driver mysql: # pip install mysqlclient 
+	# python manage.py migrate
+	# python manage.py createsuperuser
+
++ Migrate Table From models.py:
+	# python manage.py makemigrations
+	# python manage.py migrate
+	
++ Install Django Filter: 
+	# pip install django-filter or # py -m pip install django-filter
+	INSTALLED_APPS = [
+		...
+		'django_filters',
+	]
+	
++ Photo:
+	# python -m pip install Pillow

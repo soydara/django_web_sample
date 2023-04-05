@@ -1,0 +1,73 @@
+{% extends 'accounts/main.html' %}
+
+{% block content %}
+    <h1>Dashboard</h1>
+    <div class="row">
+        <div class="col-md-4 border border-primary">
+            Total Orders: {{ total_orders }}
+        </div>
+        <div class="col-md-4 border border-success">
+            Orders Delivered: {{ delivered }}
+        </div>
+        <div class="col-md-4 border border-danger">
+            Orders Pending: {{ pending }}
+        </div>
+    </div>
+    <br/>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="text-right">
+                <button class="btn btn-sm btn-primary">Create Customer</button>
+            </div>
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>View</th>
+                    <th>Customer</th>
+                    <th>Phone</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for i in customers %}
+                    <tr>
+                        <td><a href="{% url 'customer' i.id %}">View</a></td>
+                        <td>{{ i.name }}</td>
+                        <td>{{ i.phone }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="col-md-6">
+            <div class="text-right">
+{#                <a href="{% url 'create_order' %}">#}
+{#                    <button class="btn btn-sm btn-primary">#}
+{#                        Create Order#}
+{#                    </button>#}
+{#                </a>#}
+            </div>
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Date Ordered</th>
+                    <th>Status</th>
+                    <th>Update</th>
+                    <th>Remove</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for i in orders %}
+                    <tr>
+                        <td>{{ i.product }}</td>
+                        <td>{{ i.date_created }}</td>
+                        <td>Padding</td>
+                        <td><a href="{% url 'update_order' i.id %}">Update</a></td>
+                        <td><a href="{% url 'delete_order' i.id %}">Remove</a></td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

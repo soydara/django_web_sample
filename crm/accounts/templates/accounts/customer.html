@@ -1,0 +1,52 @@
+{% extends 'accounts/main.html' %}
+
+{% block content %}
+    <h1>Customer</h1>
+    <div class="row">
+        <div class="col-md-4">
+            <h3>Customer:</h3>
+            <a href="{% url 'create_order' customers.id %}">Place Order</a>
+        </div>
+        <div class="col-md-4">
+            <h3>Contact Information:</h3>
+            <h5>Email: {{ customers.email }}</h5>
+            <h5>Phone: {{ customers.phone }}</h5>
+        </div>
+        <div class="col-md-4">
+            <h3>Total Orders: {{ orders_count }}</h3>
+        </div>
+    </div>
+    <div class="row">
+        <form method="get">
+            {{ myFilter.form }}
+            <button class="btn btn-primary" type="submit">Search</button>
+        </form>
+
+    </div>
+    <div class="row">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Product</th>
+                <th>Category</th>
+                <th>Date Order</th>
+                <th>Status</th>
+                <th>Update</th>
+                <th>Remove</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for i in orders %}
+                <tr>
+                    <td>{{ i.product }}</td>
+                    <td>{{ i.product.category }}</td>
+                    <td>{{ i.date_created }}</td>
+                    <td>{{ i.status }}</td>
+                    <td><a href="{% url 'update_order' i.id %}">Update</a></td>
+                        <td><a href="{% url 'delete_order' i.id %}">Remove</a></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
